@@ -3,24 +3,50 @@ import { Search } from "lucide-react";
 import useData from "./useData";
 
 function Home() {
-  const { countries, selectedRegion, setSelectedRegion } = useData();
-  console.log(selectedRegion);
+  const {
+    filteredCountry,
+    inputValue,
+    setInputValue,
+    setSelectedRegion,
+    setSearchCountry,
+    searchCountry,
+    selectedRegion,
+  } = useData();
+  // console.log(selectedRegion);
+  // let filteredRegion;
+
+  //search country
+  const handleInputValue = (e) => {
+    setInputValue(e.target.value.toLowerCase());
+  };
+
+  const handleSearch = () => {
+    setSearchCountry(inputValue);
+    setInputValue("");
+  };
+  // console.log(searchCountry);
+
+  //filter region
   const handleChange = (e) => {
     setSelectedRegion(e.target.value);
   };
-  const filteredRegion = selectedRegion
-    ? countries.filter((country) => country.region === selectedRegion)
-    : countries;
+
+  // console.log(selectedRegion);
 
   return (
     <div className="p-12 bg-gray-50  min-h-screen max-w-[1400px] my-0 mx-auto">
       <div className="md:flex justify-between">
         <div className="shadow bg-white relative grid items-center px-6 h-fit">
-          <Search className="size-4 text-gray-500 absolute left-2 cursor-pointer" />
+          <Search
+            className="size-4 text-gray-500 absolute left-2 cursor-pointer"
+            onClick={handleSearch}
+          />
           <input
             type="text"
             placeholder="Search for a country..."
             className="p-3 outline-none text-gray-500 text-sm"
+            value={searchCountry}
+            onChange={handleInputValue}
           />
         </div>
         <div className="mt-12 md:mt-0">
@@ -32,18 +58,18 @@ function Home() {
               className="px-2"
             >
               <option value="">All</option>
-              <option value="Africa">Africa</option>
-              <option value="Americas">Americas</option>
-              <option value="Asia">Asia</option>
-              <option value="Europe">Europe</option>
-              <option value="Oceania">Oceania</option>
+              <option value="africa">Africa</option>
+              <option value="americas">Americas</option>
+              <option value="asia">Asia</option>
+              <option value="europe">Europe</option>
+              <option value="oceania">Oceania</option>
             </select>
           </label>
         </div>
       </div>
       {/*cards  */}
       <div className="mt-6 md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 place-content-center m-auto ">
-        {filteredRegion.map((data) => (
+        {filteredCountry.map((data) => (
           <Link
             to={`/${data.name.common}`}
             key={data.name.common}

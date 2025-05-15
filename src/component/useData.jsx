@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 function useData() {
   const [countries, setCountries] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState("");
+  const [inputValue, setInputValue] = useState("test");
+  const [searchCountry, setSearchCountry] = useState("");
+  const [filteredCountry, setFilteredCountry] = useState([]);
 
+  console.log(searchCountry);
   const url = "https://restcountries.com/v3.1/independent?status=true";
   useEffect(() => {
     const getData = async () => {
@@ -19,9 +23,37 @@ function useData() {
       } finally {
         // console.log("done fecthing");
       }
+      setInputValue("");
     };
     getData();
   }, []);
-  return { countries, setCountries, selectedRegion, setSelectedRegion };
+
+  useEffect(() => {
+    const filterCountries = () => {
+      let filtered = countries;
+      if (selectedRegion) {
+        filtered = filtered.filter(
+          (country) => country.region.toLowerCase() === selectedRegion
+        );
+      }
+      if (searchCountry) {
+        filtered = filtered.filter((country) =>
+          country.name.common.toLowerCase().includes(searchCountry)
+        );
+      }
+      setFilteredCountry(filtered);
+    };
+    filterCountries();
+  }, [selectedRegion, searchCountry, countries]);
+  return {
+    filteredCountry,
+    inputValue,
+    setInputValue,
+    // selectedRegion,
+    setSelectedRegion,
+    // searchCountry,
+    setSearchCountry,
+    countries,
+  };
 }
 export default useData;
