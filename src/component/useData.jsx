@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 function useData() {
   const [countries, setCountries] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState("");
-  const [inputValue, setInputValue] = useState("test");
+  const [inputValue, setInputValue] = useState("");
   const [searchCountry, setSearchCountry] = useState("");
   const [filteredCountry, setFilteredCountry] = useState([]);
 
-  console.log(searchCountry);
-  const url = "https://restcountries.com/v3.1/independent?status=true";
+  // console.log(searchCountry);
+  const url = "https://restcountries.com/v3.1/all";
   useEffect(() => {
     const getData = async () => {
       try {
@@ -31,11 +31,16 @@ function useData() {
   useEffect(() => {
     const filterCountries = () => {
       let filtered = countries;
-      if (selectedRegion) {
-        filtered = filtered.filter(
-          (country) => country.region.toLowerCase() === selectedRegion
-        );
-      }
+      // if (selectedRegion) {
+      //   filtered = filtered.filter(
+      //     (country) => country.region.toLowerCase() === selectedRegion
+      //   );
+      // }
+      selectedRegion
+        ? (filtered = filtered.filter(
+            (country) => country.region.toLowerCase() === selectedRegion
+          ))
+        : countries;
       if (searchCountry) {
         filtered = filtered.filter((country) =>
           country.name.common.toLowerCase().includes(searchCountry)
@@ -49,9 +54,7 @@ function useData() {
     filteredCountry,
     inputValue,
     setInputValue,
-    // selectedRegion,
     setSelectedRegion,
-    // searchCountry,
     setSearchCountry,
     countries,
   };

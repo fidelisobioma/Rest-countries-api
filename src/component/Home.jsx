@@ -9,11 +9,7 @@ function Home() {
     setInputValue,
     setSelectedRegion,
     setSearchCountry,
-    searchCountry,
-    selectedRegion,
   } = useData();
-  // console.log(selectedRegion);
-  // let filteredRegion;
 
   //search country
   const handleInputValue = (e) => {
@@ -24,14 +20,11 @@ function Home() {
     setSearchCountry(inputValue);
     setInputValue("");
   };
-  // console.log(searchCountry);
 
   //filter region
   const handleChange = (e) => {
     setSelectedRegion(e.target.value);
   };
-
-  // console.log(selectedRegion);
 
   return (
     <div className="p-12 bg-gray-50  min-h-screen max-w-[1400px] my-0 mx-auto">
@@ -45,7 +38,7 @@ function Home() {
             type="text"
             placeholder="Search for a country..."
             className="p-3 outline-none text-gray-500 text-sm"
-            value={searchCountry}
+            value={inputValue}
             onChange={handleInputValue}
           />
         </div>

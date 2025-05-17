@@ -1,16 +1,16 @@
 import { MoveLeft } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import useData from "./useData";
-
-function Details() {
-  const { countryname } = useParams();
-  // console.log(countryname);
+function Border() {
+  const { bordername } = useParams();
   const { countries } = useData();
-  const countriesDetails =
-    countries &&
-    countries.filter((country) => country.name.common === countryname);
-  console.log(countriesDetails);
-  // console.log(countries);
+  //   console.log(bordername);
+  //   console.log(countries);
+  let countriesBorders = countries.filter(
+    (country) => country.cca3 && country.cca3.includes(bordername)
+  );
+  console.log(countriesBorders);
+  // countriesBorders;
   return (
     <div className="px-12 bg-gray-50  min-h-screen max-w-[1400px] my-0 mx-auto  gap-8">
       <div onClick={() => history.back()} className="cursor-pointer">
@@ -21,7 +21,7 @@ function Details() {
       </div>
       <div>
         {countries &&
-          countriesDetails.map((detail) => (
+          countriesBorders.map((detail) => (
             <div key={detail.name.common} className="mt-12 md:flex gap-20">
               <div>
                 <img src={detail.flags.png} alt={detail.flags.alt} />
@@ -95,4 +95,4 @@ function Details() {
     </div>
   );
 }
-export default Details;
+export default Border;
