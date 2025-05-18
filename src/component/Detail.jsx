@@ -10,12 +10,12 @@ function Details() {
     countries.filter((country) => country.name.common === countryname);
   console.log(countriesDetails);
   return (
-    <div className="px-12 bg-lightbg  min-h-screen max-w-[1400px] my-0 mx-auto  gap-8">
+    <div className="px-12 bg-lightbg dark:bg-darkbg950  min-h-screen max-w-[1400px] my-0 mx-auto  gap-8">
       <div onClick={() => history.back()} className="cursor-pointer">
-        <div className="mt-12 px-3 py-px shadow bg-lightbg flex items-center w-fit gap-1 text-sm text-gray-500 rounded hover:scale-105 transition-transform duration-300">
+        <div className="mt-12 px-3 py-px shadow bg-lightbg dark:bg-darkbg900 flex items-center w-fit gap-1 text-sm text-gray-500 rounded hover:scale-105 transition-transform duration-300">
           <MoveLeft className="w-4 stroke-1" />
           <div>
-            <p className="text-lighttext"> Back</p>
+            <p className="text-lighttext dark:bg-darktext"> Back</p>
           </div>
         </div>
       </div>
@@ -30,58 +30,72 @@ function Details() {
                 <h2 className="mt-12 md:mt-0 text-sm font-bold mb-6">
                   {detail.name.common}
                 </h2>
-                <div className=" md:flex gap-20">
+                <div className="md:flex gap-20">
                   <div className="grid gap-2 text-sm">
-                    <div className="flex gap-2 text-lighttext">
+                    <div className="flex gap-2 text-lighttext dark:text-darktext">
                       Native name:
-                      <p className="text-gray-500">{}</p>
+                      <span className="text-gray-500"></span>
                     </div>
                     <div className="flex gap-2">
                       Population:
-                      <span className="text-gray-500">{detail.population}</span>
+                      <span className="text-gray-500 dark:text-gray-400">
+                        {detail.population}
+                      </span>
                     </div>
-                    <div className="flex gap-2 text-lighttext">
+                    <div className="flex gap-2 text-lighttext dark:text-darktext">
                       Region:
-                      <p className="text-gray-500">{detail.region}</p>
+                      <span className="text-gray-500 dark:text-gray-400">
+                        {detail.region}
+                      </span>
                     </div>
-                    <div className="flex gap-2 text-lighttext">
+                    <div className="flex gap-2 text-lighttext dark:text-darktext">
                       Sub Region:
-                      <p className="text-gray-500">{detail.subregion}</p>
+                      <span className="text-gray-500 dark:text-gray-">
+                        {detail.subregion}
+                      </span>
                     </div>
-                    <div className="flex gap-2 text-lighttext">
+                    <div className="flex gap-2 text-lighttext dark:text-darktext">
                       Capital:
-                      <p className="text-gray-500">{detail.capital}</p>
+                      <span className="text-gray-500 dark:text-gray-">
+                        {detail.capital}
+                      </span>
                     </div>
                   </div>
                   <div className="text-sm mt-12 md:mt-0 leading-loose">
-                    <div className="flex gap-2 text-lighttext">
-                      Top Level Domain: <p className="text-gray-500"></p>
+                    <div className="flex gap-2 text-lighttext dark:text-darktext">
+                      Top Level Domain:
+                      <span className="text-gray-500 dark:text-gray-"></span>
                     </div>
-                    <div className="flex gap-2 text-lighttext">
+                    <div className="flex gap-2 text-lighttext dark:text-darktext">
                       Currency:
-                      <p className="text-gray-500">
+                      <span className="text-gray-500 dark:text-gray-400">
                         {Object.values(detail.currencies)[0].name}
-                      </p>
+                      </span>
                     </div>
-                    <div className="flex gap-2 text-lighttext">
+                    <div className="flex gap-2 text-lighttext dark:text-darktext">
                       Languages:
                       {Object.values(detail.languages).map((lan) => (
-                        <p key={lan} className="text-gray-500">
+                        <span
+                          key={lan}
+                          className="text-gray-500 dark:text-gray-400"
+                        >
                           {lan + " ,"}
-                        </p>
+                        </span>
                       ))}
                     </div>
                   </div>
                 </div>
                 <div className="mt-20 md:mt-12 md:flex gap-2 items-center flex-wrap mb-4">
-                  <h2 className="text-sm font-bold">Border Countries:</h2>
+                  <h2 className="text-sm font-bold text-lighttext dark:bg-darktext">
+                    Border Countries:
+                  </h2>
                   <div className="flex gap-2 items-center flex-wrap">
                     {detail.borders &&
                       detail.borders.map((border) => (
                         <Link
                           to={`/border/${border}`}
                           key={border}
-                          className="bg-lightbg shadow py-1 px-8 text-sm"
+                          className="bg-lightbg dark:bg-darkbg900 text-lighttext dark:text-darktext shadow py-1 px-8 text-sm"
                         >
                           {border}
                         </Link>
