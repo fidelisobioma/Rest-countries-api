@@ -4,19 +4,18 @@ import useData from "./useData";
 function Border() {
   const { bordername } = useParams();
   const { countries } = useData();
-  //   console.log(bordername);
-  //   console.log(countries);
   let countriesBorders = countries.filter(
     (country) => country.cca3 && country.cca3.includes(bordername)
   );
-  console.log(countriesBorders);
-  // countriesBorders;
   return (
-    <div className="px-12 bg-gray-50  min-h-screen max-w-[1400px] my-0 mx-auto  gap-8">
+    <div className="px-12 bg-lightbg  min-h-screen max-w-[1400px] my-0 mx-auto  gap-8">
       <div onClick={() => history.back()} className="cursor-pointer">
         <div className="mt-12 px-3 py-px shadow bg-white flex items-center w-fit gap-1 text-sm text-gray-500 rounded hover:scale-105 transition-transform duration-300">
           <MoveLeft className="w-4 stroke-1" />
-          <p> Back</p>
+          <div>
+            {" "}
+            <p className="text-lighttext"> Back</p>
+          </div>
         </div>
       </div>
       <div>
@@ -27,37 +26,37 @@ function Border() {
                 <img src={detail.flags.png} alt={detail.flags.alt} />
               </div>
               <div>
-                <h2 className="mt-12 md:mt-0 text-sm font-bold mb-6">
+                <h2 className="mt-12 md:mt-0 text-sm font-bold mb-6 text-lighttext">
                   {detail.name.common}
                 </h2>
                 <div className=" md:flex gap-20">
                   <div className="grid gap-2 text-sm">
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 text-lighttext">
                       Native name:
                       <p className="text-gray-500">{}</p>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 text-lighttext">
                       Population:
                       <span className="text-gray-500">{detail.population}</span>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 text-lighttext">
                       Region:
                       <p className="text-gray-500">{detail.region}</p>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 text-lighttext">
                       Sub Region:
                       <p className="text-gray-500">{detail.subregion}</p>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 text-lighttext">
                       Capital:
                       <p className="text-gray-500">{detail.capital}</p>
                     </div>
                   </div>
-                  <div className="text-sm mt-12 md:mt-0 leading-loose">
+                  <div className="text-sm mt-12 md:mt-0 leading-loose text-lighttext">
                     <div className="flex gap-2">
                       Top Level Domain: <p className="text-gray-500"></p>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 text-lighttext">
                       Currency:
                       <p className="text-gray-500">
                         {Object.values(detail.currencies)[0].name}
@@ -81,7 +80,7 @@ function Border() {
                         <Link
                           to={`/border/${border}`}
                           key={border}
-                          className="bg-white shadow py-1 px-8 text-sm"
+                          className="bg-lightbg shadow py-1 px-8 text-sm"
                         >
                           {border}
                         </Link>
