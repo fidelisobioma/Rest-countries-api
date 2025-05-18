@@ -12,7 +12,7 @@ function Details() {
   return (
     <div className="px-12 bg-lightbg dark:bg-darkbg950  min-h-screen max-w-[1400px] my-0 mx-auto  gap-8">
       <div onClick={() => history.back()} className="cursor-pointer">
-        <div className="mt-12 px-3 py-px shadow bg-lightbg dark:bg-darkbg900 flex items-center w-fit gap-1 text-sm text-gray-500 rounded hover:scale-105 transition-transform duration-300">
+        <div className="pt-12 px-3 py-px shadow bg-lightbg dark:bg-darkbg900 flex items-center w-fit gap-1 text-sm text-gray-500 rounded hover:scale-105 transition-transform duration-300">
           <MoveLeft className="w-4 stroke-1" />
           <div>
             <p className="text-lighttext dark:text-darktext"> Back</p>
@@ -27,7 +27,7 @@ function Details() {
                 <img src={detail.flags.png} alt={detail.flags.alt} />
               </div>
               <div>
-                <h2 className="mt-12 md:mt-0 text-sm font-bold mb-6 text-lighttext dark:bg-darktext">
+                <h2 className="mt-12 md:mt-0 text-sm font-bold mb-6 text-lighttext dark:text-darktext">
                   {detail.name.common}
                 </h2>
                 <div className="md:flex gap-20">
@@ -86,7 +86,7 @@ function Details() {
                   </div>
                 </div>
                 <div className="mt-20 md:mt-12 md:flex  gap-2 items-center flex-wrap mb-4">
-                  <h2 className="text-sm font-bold text-lighttext dark:text-darktext">
+                  <h2 className="text-sm mb-4 md:mb-0 font-bold text-lighttext dark:text-darktext">
                     Border Countries:
                   </h2>
                   <div className="flex gap-2 items-center flex-wrap">
