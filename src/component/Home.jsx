@@ -27,7 +27,7 @@ function Home() {
   };
 
   return (
-    <div className="p-12 bg-gray-50  min-h-screen max-w-[1400px] my-0 mx-auto">
+    <div className="p-12 bg-gray-50 min-h-screen max-w-[1400px] my-0 mx-auto">
       <div className="md:flex justify-between">
         <div className="shadow bg-white relative grid items-center px-6 h-fit">
           <Search
@@ -61,7 +61,7 @@ function Home() {
         </div>
       </div>
       {/*cards  */}
-      <div className="mt-6 md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 place-content-center m-auto ">
+      <div className="mt-6 md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 place-content-center m-auto">
         {filteredCountry.map((data) => (
           <Link
             to={`/${data.name.common}`}
