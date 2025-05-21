@@ -8,25 +8,40 @@ function useData() {
   const [inputValue, setInputValue] = useState("");
   const [filteredCountry, setFilteredCountry] = useState([]);
 
-  // console.log(searchCountry);
   const url = "https://restcountries.com/v3.1/independent?status=true";
   useEffect(() => {
     const getData = async () => {
       try {
         const response = await fetch(url, { mode: "cors" });
         if (!response.ok) {
-          throw new Error(`https:${response.status} something went wrong`);
+          if (response === 404) {
+            throw new Error("This site does not exist.");
+          } else {
+            throw new Error(`HTTP error!:${response.status}`);
+          }
         }
         const gotData = await response.json();
         setCountries(gotData);
         setError(null);
-        // setLoading(false);
-        // console.log(gotData);
-      } catch (err) {
-        setError(err.message);
-        setCountries(null);
+      } catch (error) {
+        if (error.message.includes("Failed to fetch")) {
+          setError(
+            "Failed to fetch. Check your internet connection and try again"
+          );
+          setCountries(null);
+        } else if (error.message.includes("does not exist")) {
+          setError("This site does not exist");
+          setCountries(null);
+        } else if (
+          error instanceof TypeError &&
+          error.message.includes("invalid URL")
+        ) {
+          setError("Invalid URL. Please check the address.");
+          setCountries(null);
+        } else {
+          setCountries(error.message);
+        }
       } finally {
-        // console.log("done fecthing");
         setLoading(false);
       }
       setInputValue("");
@@ -47,8 +62,6 @@ function useData() {
       filter =
         filter && filter.filter((country) => country.region == selectedRegion);
     }
-
-    console.log(filter);
     setFilteredCountry(filter);
   }, [countries, inputValue, selectedRegion]);
   return {

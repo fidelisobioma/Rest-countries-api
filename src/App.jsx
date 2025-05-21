@@ -1,13 +1,18 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./component/Navbar";
 import useData from "./component/useData";
+import Loading from "./component/Loading";
 
 function App() {
   const { loading, error, filteredCountry } = useData();
   return (
     <div className="bg-gray-50 ">
-      {loading && <div>Loading...</div>}
-      {error && <div>{error}</div>}
+      {loading && <Loading />}
+      {error && (
+        <div className="flex items-center justify-center h-screen p-12">
+          {error}
+        </div>
+      )}
       {filteredCountry && (
         <div>
           <Navbar />

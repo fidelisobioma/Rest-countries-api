@@ -5,14 +5,8 @@ import { useState } from "react";
 
 function Home() {
   const [dropDown, setDropDown] = useState(true);
-  const {
-    filteredCountry,
-    countries,
-    inputValue,
-    setInputValue,
-    // selectedRegion,
-    setSelectedRegion,
-  } = useData();
+  const { filteredCountry, inputValue, setInputValue, setSelectedRegion } =
+    useData();
 
   //search country
   const handleInputValue = (e) => {
@@ -21,7 +15,6 @@ function Home() {
 
   //filter region
   const handleChange = (e) => {
-    // setSelectedRegion(e.target.value);
     setSelectedRegion(e.target.textContent);
   };
   const handleClick = () => {
@@ -114,7 +107,6 @@ function Home() {
           ))}
       </div>
     </div>
-    // <div></div>
   );
 }
 export default Home;
