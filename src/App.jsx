@@ -6,7 +6,7 @@ import Loading from "./component/Loading";
 function App() {
   const { loading, error, filteredCountry } = useData();
   return (
-    <div className="bg-gray-50 ">
+    <div className="bg-lightbg dark:bg-darkbg950 ">
       {loading && <Loading />}
       {error && (
         <div className="flex items-center justify-center h-screen p-12">

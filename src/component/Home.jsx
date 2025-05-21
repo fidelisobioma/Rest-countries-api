@@ -22,8 +22,8 @@ function Home() {
   };
 
   return (
-    <div className="transition-all duration-300 p-6 md:p-12 bg-lightbg dark:bg-darkbg950 max-w-[1400px] my-0 min-h-screen mx-auto">
-      <div className="md:flex justify-between">
+    <div className="mt-2 transition-all duration-300 p-6 md:p-12 bg-lightbg dark:bg-darkbg950 max-w-[1400px] my-0 min-h-screen mx-auto">
+      <div className="md:flex justify-between ">
         <div className="shadow bg-lightbg dark:bg-darkbg900 relative grid items-center px-6 h-fit">
           <Search className="size-4 text-[hsl(0,0%,50%)] dark:text-darktext absolute left-2" />
           <input
@@ -44,9 +44,9 @@ function Home() {
             </p>
             <div>
               {!dropDown ? (
-                <ChevronDown className="size-4 text-lighttext dark:text-darktext" />
+                <ChevronDown className="size-4 text-lighttext dark:text-darktext " />
               ) : (
-                <ChevronUp className="size-4 text-lighttext dark:text-darktext" />
+                <ChevronUp className="size-4 text-lighttext dark:text-darktext " />
               )}
             </div>
           </div>
@@ -55,32 +55,47 @@ function Home() {
               onClick={handleChange}
               className={`${
                 !dropDown
-                  ? "h-fit w-full absolute  shadow  text-sm text-lighttext dark:text-darktext bg-lightbg dark:bg-darkbg900  z-50"
+                  ? "rounded h-fit w-full absolute  shadow  text-sm text-lighttext dark:text-darktext bg-lightbg dark:bg-darkbg900  z-50"
                   : "h-0 overflow-hidden absolute"
               }`}
             >
-              <li className="cursor-pointer block p-2">Africa</li>
-              <li className="cursor-pointer block p-2">Americas</li>
-              <li className="cursor-pointer block p-2">Asia</li>
-              <li className="cursor-pointer block p-2">Europe</li>
-              <li className="cursor-pointer block p-2">Oceania</li>
+              {/* <li className="cursor-pointer block p-2">All</li> */}
+              <li className="cursor-pointer block p-2 hover:bg-gray-200 dark:hover:bg-slate-600 ">
+                Africa
+              </li>
+              <li className="cursor-pointer block p-2 hover:bg-gray-200 dark:hover:bg-slate-600 ">
+                Americas
+              </li>
+              <li className="cursor-pointer block p-2 hover:bg-gray-200 dark:hover:bg-slate-600 ">
+                Asia
+              </li>
+              <li className="cursor-pointer block p-2 hover:bg-gray-200 dark:hover:bg-slate-600 ">
+                Europe
+              </li>
+              <li className="cursor-pointer block p-2 hover:bg-gray-200 dark:hover:bg-slate-600 ">
+                Oceania
+              </li>
             </ul>
           </div>
         </div>
       </div>
       {/*cards  */}
-      <div className="bg-lightbg dark:bg-darkbg950 md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 m-auto mt-6">
+      <div className="transition-all duration-300 bg-lightbg dark:bg-darkbg950 grid md:grid-cols-2 lg:grid-cols-4 gap-8 m-auto mt-6">
         {filteredCountry &&
           filteredCountry.map((data) => (
             <Link
               to={`/${data.name.common}`}
               key={data.name.common}
-              className=" grid justify-center shadow bg-lightbg dark:bg-darkbg900 rounded mt-12 md:mt-0 hover:scale-105 transition-transform duration-500 hover:cursor-pointer"
+              className="shadow bg-lightbg dark:bg-darkbg900 rounded mt-12 md:mt-0 hover:scale-105 transition-transform duration-500 hover:cursor-pointer"
             >
-              <div>
-                <img src={data.flags.png} alt="" />
+              <div className="h-[180px]">
+                <img
+                  src={data.flags.png}
+                  alt=""
+                  className="w-full h-full object-cover block rounded-t"
+                />
               </div>
-              <div className="p-6 grid gap-2 text-sm">
+              <div className="p-6 grid gap-2  text-sm">
                 <p className="font-bold text-sm text-lighttext dark:text-darktext">
                   {data.name.common}
                 </p>
