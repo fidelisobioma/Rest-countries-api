@@ -10,9 +10,9 @@ function Details() {
     countries.filter((country) => country.name.common === countryname);
   console.log(countriesDetails);
   return (
-    <div className="px-12 bg-lightbg dark:bg-darkbg950  min-h-screen max-w-[1400px] my-0 mx-auto  gap-8">
+    <div className="transition-all duration-300 p-6 md:px-12 bg-lightbg dark:bg-darkbg950  min-h-screen max-w-[1400px] my-0 mx-auto  gap-8">
       <div onClick={() => history.back()} className="cursor-pointer">
-        <div className="pt-12 px-3 py-px shadow bg-lightbg dark:bg-darkbg900 flex items-center w-fit gap-1 text-sm text-gray-500 rounded hover:scale-105 transition-transform duration-300">
+        <div className="px-3 py-px shadow bg-lightbg dark:bg-darkbg900 flex items-center w-fit gap-1 text-sm text-gray-500 rounded hover:scale-105 transition-transform duration-300">
           <MoveLeft className="w-4 stroke-1" />
           <div>
             <p className="text-lighttext dark:text-darktext"> Back</p>
