@@ -10,9 +10,9 @@ function Details() {
     countries.filter((country) => country.name.common === countryname);
   console.log(countriesDetails);
   return (
-    <div className="mt-2 transition-all duration-300 p-6 md:px-12 bg-lightbg dark:bg-darkbg950  min-h-screen max-w-[1400px] my-0 mx-auto  gap-8">
+    <div className=" mt-2 transition-all duration-300 p-6 md:px-12 bg-lightbg dark:bg-darkbg950  min-h-screen max-w-[1400px] my-0 mx-auto  gap-8">
       <div onClick={() => history.back()} className="cursor-pointer">
-        <div className="px-3 py-px shadow bg-lightbg dark:bg-darkbg900 flex items-center w-fit gap-1 text-sm text-gray-500 rounded hover:scale-105 transition-transform duration-300">
+        <div className="px-3 py-px shadow bg-lightbg dark:bg-darkbg900 flex items-center w-fit gap-1 text-sm text-gray-500 rounded">
           <MoveLeft className="w-4 stroke-1" />
           <div>
             <p className="text-lighttext dark:text-darktext"> Back</p>
@@ -22,7 +22,7 @@ function Details() {
       <div>
         {countries &&
           countriesDetails.map((detail) => (
-            <div key={detail.name.common} className="mt-12 md:flex gap-20">
+            <div key={detail.name.common} className="mt-12 md:flex gap-20 ">
               <div>
                 <img src={detail.flags.png} alt={detail.flags.alt} />
               </div>
@@ -32,9 +32,16 @@ function Details() {
                 </h2>
                 <div className="md:flex gap-20">
                   <div className="grid gap-2 text-sm">
-                    <div className="flex gap-2 text-lighttext dark:text-darktext">
+                    <div className="flex gap-2  text-lighttext dark:text-darktext">
                       Native name:
-                      <span className="text-gray-500 dark:text-gray-400"></span>
+                      {Object.values(detail.name.nativeName).map((native) => (
+                        <span
+                          key={native.common}
+                          className="text-gray-500 dark:text-gray-400"
+                        >
+                          {native.common}
+                        </span>
+                      ))}
                     </div>
                     <div className="flex gap-2 text-lighttext dark:text-darktext">
                       Population:
@@ -64,7 +71,9 @@ function Details() {
                   <div className="text-sm mt-12 md:mt-0 leading-loose">
                     <div className="flex gap-2 text-lighttext dark:text-darktext">
                       Top Level Domain:
-                      <span className="text-gray-500 dark:text-gray-400"></span>
+                      <span className="text-gray-500 dark:text-gray-400">
+                        {detail.altSpellings[0]}
+                      </span>
                     </div>
                     <div className="flex gap-2 text-lighttext dark:text-darktext">
                       Currency:
@@ -79,7 +88,7 @@ function Details() {
                           key={lan}
                           className="text-gray-500 dark:text-gray-400"
                         >
-                          {lan + " ,"}
+                          {lan}
                         </span>
                       ))}
                     </div>

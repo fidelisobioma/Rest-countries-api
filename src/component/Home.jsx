@@ -16,6 +16,7 @@ function Home() {
   //filter region
   const handleChange = (e) => {
     setSelectedRegion(e.target.textContent);
+    console.log(e.target.textContent);
   };
   const handleClick = () => {
     setDropDown(!dropDown);
@@ -59,7 +60,6 @@ function Home() {
                   : "h-0 overflow-hidden absolute"
               }`}
             >
-              {/* <li className="cursor-pointer block p-2">All</li> */}
               <li className="cursor-pointer block p-2 hover:bg-gray-200 dark:hover:bg-slate-600 ">
                 Africa
               </li>

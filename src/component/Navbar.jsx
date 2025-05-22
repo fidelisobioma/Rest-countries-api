@@ -10,7 +10,7 @@ function Navbar({ toggleDarkMode, darkMode }) {
       <div>
         <Link
           to="/"
-          className="font-bold text-smtext-darktext dark:text-darktext text-lighttext"
+          className="font-bold text-sm text-darktext dark:text-darktext "
         >
           Where in the world?
         </Link>

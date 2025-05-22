@@ -54,14 +54,21 @@ function useData() {
     filter =
       filter &&
       filter.filter((country) =>
-        country.name.common.toLowerCase().includes(inputValue)
+        country.name.common.toLowerCase().includes(inputValue.trim())
       );
 
-    //filter region
+    // filter =
+    //   filter && filter.filter((country) => country.region == selectedRegion);
+
     if (selectedRegion) {
       filter =
         filter && filter.filter((country) => country.region == selectedRegion);
     }
+    /*selectedRegion
+      ? (filter =
+          filter &&
+          filter.filter((country) => country.region == selectedRegion))
+      : "";*/
     setFilteredCountry(filter);
   }, [countries, inputValue, selectedRegion]);
   //dark mode
