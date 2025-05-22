@@ -64,6 +64,18 @@ function useData() {
     }
     setFilteredCountry(filter);
   }, [countries, inputValue, selectedRegion]);
+  //dark mode
+  const [darkMode, setDarkMode] = useState(false);
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+      setDarkMode(true);
+    }
+  }, []);
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    localStorage.setItem("theme", darkMode ? "light" : "dark");
+  };
   return {
     filteredCountry,
     inputValue,
@@ -73,6 +85,8 @@ function useData() {
     countries,
     loading,
     error,
+    darkMode,
+    toggleDarkMode,
   };
 }
 export default useData;
