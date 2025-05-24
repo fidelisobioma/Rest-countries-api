@@ -9,7 +9,7 @@ function Details() {
     countries &&
     countries.filter((country) => country.name.common === countryname);
   return (
-    <div className=" pt-32 transition-all duration-300 p-6 md:px-12 bg-lightbg dark:bg-darkbg950  min-h-screen max-w-[1400px] my-0 mx-auto  gap-8">
+    <div className=" pt-32 transition-all duration-300 p-12 md:px-12 bg-lightbg dark:bg-darkbg950  min-h-screen max-w-[1400px] my-0 mx-auto  gap-8">
       <div onClick={() => history.back()} className="cursor-pointer">
         <div className="mt-6 px-3 py-px shadow bg-lightbg dark:bg-darkbg900 flex items-center w-fit gap-1 text-sm text-gray-500 rounded">
           <MoveLeft className="w-4 stroke-1" />
@@ -29,7 +29,7 @@ function Details() {
                 <h2 className="mt-12 md:mt-0 text-sm font-bold mb-6 text-lighttext dark:text-darktext">
                   {detail.name.common}
                 </h2>
-                <div className="md:flex gap-20">
+                <div className="md:flex flex-wrap gap-20">
                   <div className="grid gap-2 text-sm">
                     <div className="flex flex-wrap gap-2  text-lighttext dark:text-darktext">
                       Native name:
@@ -38,7 +38,9 @@ function Details() {
                           <span
                             key={index}
                             className="text-gray-500 dark:text-gray-400"
-                          ></span>
+                          >
+                            {native.common}
+                          </span>
                         )
                       )}
                     </div>
