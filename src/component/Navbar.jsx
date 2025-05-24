@@ -3,7 +3,7 @@ import { Moon, Sun } from "lucide-react";
 
 function Navbar({ toggleDarkMode, darkMode }) {
   return (
-    <div className="flex justify-between items-center  py-6 px-6 md:px-12 shadow dark:bg-darkbg900 bg-lightbg max-w-[1400px] my-0 mx-auto">
+    <div className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center  py-6 px-12 shadow dark:bg-darkbg900 bg-lightbg max-w-[1400px] my-0 mx-auto">
       <div>
         <Link
           to="/"

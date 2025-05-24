@@ -15,7 +15,7 @@ function Home() {
 
   //filter region
   const handleChange = (e) => {
-    setSelectedRegion(e.target.textContent);
+    setSelectedRegion(e.target.id);
     console.log(e.target.textContent);
   };
   const handleClick = () => {
@@ -23,9 +23,9 @@ function Home() {
   };
 
   return (
-    <div className="mt-2 transition-all duration-300 p-6 md:p-12 bg-lightbg dark:bg-darkbg950 max-w-[1400px] my-0 min-h-screen mx-auto">
+    <div className="mt-12 transition-all duration-300 p-12 bg-lightbg dark:bg-darkbg950 max-w-[1400px] my-0 min-h-screen mx-auto">
       <div className="md:flex justify-between ">
-        <div className="shadow bg-lightbg dark:bg-darkbg900 relative grid items-center px-6 h-fit">
+        <div className="rounded-md shadow bg-lightbg dark:bg-darkbg900 relative grid items-center px-6 h-fit">
           <Search className="size-4 text-[hsl(0,0%,50%)] dark:text-darktext absolute left-2" />
           <input
             type="text"
@@ -35,10 +35,10 @@ function Home() {
             onChange={handleInputValue}
           />
         </div>
-        <div className="mt-12 md:mt-0 w-[150px] relative">
+        <div className=" mt-12 md:mt-0 w-[150px] relative">
           <div
             onClick={handleClick}
-            className="flex gap-2 items-center shadow p-3 cursor-pointer bg-lightbg dark:bg-darkbg900"
+            className="rounded-md flex gap-2 items-center shadow p-3 cursor-pointer bg-lightbg dark:bg-darkbg900"
           >
             <p className="text-sm text-lighttext dark:text-darktext w-full">
               Filter by Region
@@ -51,7 +51,7 @@ function Home() {
               )}
             </div>
           </div>
-          <div className="mt-2">
+          <div onClick={handleClick} className="mt-2">
             <ul
               onClick={handleChange}
               className={`${
@@ -60,19 +60,40 @@ function Home() {
                   : "h-0 overflow-hidden absolute"
               }`}
             >
-              <li className="cursor-pointer block p-2 hover:bg-gray-200 dark:hover:bg-slate-600 ">
+              <li
+                id=""
+                className="cursor-pointer block p-2 hover:bg-gray-200 dark:hover:bg-slate-600 "
+              >
+                All
+              </li>
+              <li
+                id="Africa"
+                className="cursor-pointer block p-2 hover:bg-gray-200 dark:hover:bg-slate-600 "
+              >
                 Africa
               </li>
-              <li className="cursor-pointer block p-2 hover:bg-gray-200 dark:hover:bg-slate-600 ">
+              <li
+                id="Americas"
+                className="cursor-pointer block p-2 hover:bg-gray-200 dark:hover:bg-slate-600 "
+              >
                 Americas
               </li>
-              <li className="cursor-pointer block p-2 hover:bg-gray-200 dark:hover:bg-slate-600 ">
+              <li
+                id="Asia"
+                className="cursor-pointer block p-2 hover:bg-gray-200 dark:hover:bg-slate-600 "
+              >
                 Asia
               </li>
-              <li className="cursor-pointer block p-2 hover:bg-gray-200 dark:hover:bg-slate-600 ">
+              <li
+                id="Europe"
+                className="cursor-pointer block p-2 hover:bg-gray-200 dark:hover:bg-slate-600 "
+              >
                 Europe
               </li>
-              <li className="cursor-pointer block p-2 hover:bg-gray-200 dark:hover:bg-slate-600 ">
+              <li
+                id="Oceania"
+                className="cursor-pointer block p-2 hover:bg-gray-200 dark:hover:bg-slate-600 "
+              >
                 Oceania
               </li>
             </ul>
@@ -86,7 +107,7 @@ function Home() {
             <Link
               to={`/${data.name.common}`}
               key={data.name.common}
-              className="shadow bg-lightbg dark:bg-darkbg900 rounded mt-12 md:mt-0 hover:scale-105 transition-transform duration-500 hover:cursor-pointer"
+              className="shadow bg-lightbg dark:bg-darkbg900 rounded-md mt-12 md:mt-0 hover:scale-105 transition-transform duration-500 hover:cursor-pointer"
             >
               <div className="h-[180px]">
                 <img
@@ -102,19 +123,19 @@ function Home() {
                 <p className="text-lighttext dark:text-darktext">
                   Population:
                   <span className="text-gray-500 dark:text-gray-400">
-                    {data.population}
+                    {" " + data.population}
                   </span>
                 </p>
                 <p className="text-lighttext dark:text-darktext">
                   Region:
                   <span className="text-gray-500 dark:text-gray-400 ">
-                    {data.region}
+                    {" " + data.region}
                   </span>
                 </p>
                 <p className="text-lighttext dark:text-darktext">
                   Capital:
                   <span className="text-gray-500 dark:text-gray-400">
-                    {data.capital}
+                    {" " + data.capital}
                   </span>
                 </p>
               </div>
