@@ -8,7 +8,6 @@ function Details() {
   const countriesDetails =
     countries &&
     countries.filter((country) => country.name.common === countryname);
-  console.log(countriesDetails);
   return (
     <div className=" pt-32 transition-all duration-300 p-6 md:px-12 bg-lightbg dark:bg-darkbg950  min-h-screen max-w-[1400px] my-0 mx-auto  gap-8">
       <div onClick={() => history.back()} className="cursor-pointer">
@@ -32,16 +31,16 @@ function Details() {
                 </h2>
                 <div className="md:flex gap-20">
                   <div className="grid gap-2 text-sm">
-                    <div className="flex gap-2  text-lighttext dark:text-darktext">
+                    <div className="flex flex-wrap gap-2  text-lighttext dark:text-darktext">
                       Native name:
-                      {Object.values(detail.name.nativeName).map((native) => (
-                        <span
-                          key={native.common}
-                          className="text-gray-500 dark:text-gray-400"
-                        >
-                          {native.common}
-                        </span>
-                      ))}
+                      {Object.values(detail.name.nativeName).map(
+                        (native, index) => (
+                          <span
+                            key={index}
+                            className="text-gray-500 dark:text-gray-400"
+                          ></span>
+                        )
+                      )}
                     </div>
                     <div className="flex gap-2 text-lighttext dark:text-darktext">
                       Population:
