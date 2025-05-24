@@ -12,18 +12,20 @@ function Home() {
   const handleInputValue = (e) => {
     setInputValue(e.target.value.toLowerCase());
   };
+  //active region
+  const [active, setActive] = useState("Filter by Region");
 
   //filter region
   const handleChange = (e) => {
     setSelectedRegion(e.target.id);
-    console.log(e.target.textContent);
+    setActive(e.target.textContent);
   };
   const handleClick = () => {
     setDropDown(!dropDown);
   };
 
   return (
-    <div className="mt-12 transition-all duration-300 p-12 bg-lightbg dark:bg-darkbg950 max-w-[1400px] my-0 min-h-screen mx-auto">
+    <div className="relative pt-32 transition-all duration-300 p-12 bg-lightbg dark:bg-darkbg950 max-w-[1400px] my-0 min-h-screen mx-auto">
       <div className="md:flex justify-between ">
         <div className="rounded-md shadow bg-lightbg dark:bg-darkbg900 relative grid items-center px-6 h-fit">
           <Search className="size-4 text-[hsl(0,0%,50%)] dark:text-darktext absolute left-2" />
@@ -35,13 +37,13 @@ function Home() {
             onChange={handleInputValue}
           />
         </div>
-        <div className=" mt-12 md:mt-0 w-[150px] relative">
+        <div className="  md:mt-0 w-[150px] relative">
           <div
             onClick={handleClick}
-            className="rounded-md flex gap-2 items-center shadow p-3 cursor-pointer bg-lightbg dark:bg-darkbg900"
+            className="mt-12 md:mt-0 rounded-md flex gap-2 items-center shadow p-3 cursor-pointer bg-lightbg dark:bg-darkbg900"
           >
             <p className="text-sm text-lighttext dark:text-darktext w-full">
-              Filter by Region
+              {active}
             </p>
             <div>
               {!dropDown ? (

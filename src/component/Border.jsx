@@ -10,7 +10,7 @@ function Border() {
       (country) => country.cca3 && country.cca3.includes(bordername)
     );
   return (
-    <div className="mt-12 transition-all duration-300 p-6 md:px-12 bg-lightbg dark:bg-darkbg950  min-h-screen max-w-[1400px] my-0 mx-auto  gap-8">
+    <div className=" pt-32 transition-all duration-300 p-6 md:px-12 bg-lightbg dark:bg-darkbg950  min-h-screen max-w-[1400px] my-0 mx-auto  gap-8">
       <div onClick={() => history.back()} className="cursor-pointer">
         <div className=" mt-6 px-3 py-px shadow bg-lightbg dark:bg-darkbg900 flex items-center w-fit gap-1 text-sm text-gray-500 rounded">
           <MoveLeft className="w-4 stroke-1" />
