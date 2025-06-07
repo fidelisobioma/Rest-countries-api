@@ -5,6 +5,7 @@ import useData from "./useData";
 function Details() {
   const { countryname } = useParams();
   const { countries } = useData();
+
   const countriesDetails =
     countries &&
     countries.filter((country) => country.name.common === countryname);
@@ -39,7 +40,7 @@ function Details() {
                             key={index}
                             className="text-gray-500 dark:text-gray-400"
                           >
-                            {native.common}
+                            {native.official}
                           </span>
                         )
                       )}
